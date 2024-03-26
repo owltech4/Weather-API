@@ -1,11 +1,15 @@
 import requests
 from typing import Tuple  # Import Tuple from typing
+import json
+import os
 
 class WeatherFetcher:
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.base_url = "http://api.openweathermap.org/data/2.5/weather"
-        self.units = "metric"
+    def __init__(self, config_file):
+        with open(config_file, 'r') as config:
+            config_data = json.load(config)
+        self.api_key = os.getenv('teste-api', config_data.get('api_key'))
+        self.base_url = config_data['base_url']
+        self.units = config_data['units']
     
     # Change the return type annotation here
     def get_weather(self, city: str) -> Tuple[bool, str]:
