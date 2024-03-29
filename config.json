@@ -1,5 +1,5 @@
 {
-    "api_key": "c3fb11839567417b1091f3c0f978bdd1",
+    "api_key": "",
     "base_url": "http://api.openweathermap.org/data/2.5/weather",
     "units": "metric"
 }
