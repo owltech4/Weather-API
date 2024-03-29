@@ -1,5 +1,8 @@
 import unittest
+import sys
+sys.path.append('C:/Users/Desktop/Desktop/Estudo/Weather-API')
 from weather import WeatherFetcher
+
 
 class TestWeatherFetcher(unittest.TestCase):
 
