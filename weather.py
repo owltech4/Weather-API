@@ -13,6 +13,9 @@ class WeatherFetcher:
     
     # Change the return type annotation here
     def get_weather(self, city: str) -> Tuple[bool, str]:
+        # Handle empty string or None for the city name
+        if not city or city is None:
+            return False, "City name cannot be empty" if city == '' else "City name must be a string"
         url = f"{self.base_url}?q={city}&appid={self.api_key}&units={self.units}"
         try:
             response = requests.get(url)
