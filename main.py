@@ -14,7 +14,8 @@ def main():
     success, weather_or_message = weather_fetcher.get_weather(city)
     
     if success:
-        print(f"Weather data for {city}:\nTemperature: {weather_or_message['temperature']}°C\n"
+        print(f"Weather data for {city} as of {weather_or_message['time']}:\n"
+              f"Temperature: {weather_or_message['temperature']}°C\n"
               f"Weather Condition: {weather_or_message['condition']}\n"
               f"Humidity: {weather_or_message['humidity']}%")
         logger.info('Successfully retrieved current weather data.')

@@ -2,6 +2,7 @@ import requests
 from typing import Tuple, Dict
 import json
 import os
+from datetime import datetime
 
 class WeatherFetcher:
     def __init__(self, config_file):
@@ -12,12 +13,14 @@ class WeatherFetcher:
         self.units = config_data['units']
     
     def get_weather(self, city: str) -> Tuple[bool, Dict]:
+        current_time = datetime.now().strftime('%Y-%m-%d %Hh%Mm')
         url = f"{self.base_url}/weather?q={city}&appid={self.api_key}&units={self.units}"
         try:
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
             weather = {
+                'time': current_time,
                 'temperature': data['main']['temp'],
                 'condition': data['weather'][0]['description'],
                 'humidity': data['main']['humidity'],
